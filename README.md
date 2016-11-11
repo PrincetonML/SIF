@@ -3,7 +3,7 @@ This is the code for the paper "A Simple but Tough-to-Beat Baseline for Sentence
 
 The code is written in python and requires numpy, scipy, pickle, sklearn, theano and the lasagne library.
 
-To get started, cd into the directory scripts and run demo.sh. It downloads the pretrained GloVe word embeddings, and then runs sim_sif.py sim_tfidf.py supervised_sif_proj.sh. sim_sif.py sim_tfidf.py are for the textual similarity tasks, and supervised_sif_proj.sh is for the supervised tasks. Check these files to see the options.
+To get started, cd into the directory examples/ and run demo.sh. It downloads the pretrained GloVe word embeddings, and then runs sim_sif.py sim_tfidf.py supervised_sif_proj.sh. sim_sif.py sim_tfidf.py are for the textual similarity tasks, and supervised_sif_proj.sh is for the supervised tasks. Check these files to see the options.
 
 The code is separated into 3 parts:
 
