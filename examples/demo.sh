@@ -9,8 +9,8 @@ rm glove.840B.300d.zip
 fi
 
 # textual similarity tasks
-python sim_sif.py 2>&1 | tee log/output_sim_sif.py
-python sim_tfidf.py 2>&1 | tee log/output_sim_tfidf.py
+python sim_sif.py 2>&1 | tee log/output_sim_sif.txt
+python sim_tfidf.py 2>&1 | tee log/output_sim_tfidf.txt
 
 # supervised tasks
 ./supervised_sif_proj.sh 2>&1 | tee log/output_supervised_sif_proj.txt
