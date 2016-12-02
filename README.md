@@ -1,6 +1,6 @@
 # SIF
 
-This is the code for the paper "A Simple but Tough-to-Beat Baseline for Sentence Embeddings".
+This is the code for [the paper](https://openreview.net/forum?id=SyK00v5xx) "A Simple but Tough-to-Beat Baseline for Sentence Embeddings".
 
 The code is written in python and requires numpy, scipy, pickle, sklearn, theano and the lasagne library. 
 Some functions/classes are based on the [code](https://github.com/jwieting/iclr2016) of John Wieting for the paper "Towards Universal Paraphrastic Sentence Embeddings". The example data sets are also preprocessed using the code there.
