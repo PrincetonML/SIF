@@ -16,8 +16,8 @@ Check these files to see the options.
 The code is separated into 3 parts:
 
 * textual similarity tasks: involves data_io.py, eval.py, and sim_algo.py. data_io provides the code for reading the data, eval is for evaluating the performance, and sim_algo provides the code for our sentence embedding algorithm.
-* supervised tasks: involves data_io.py eval.py train.py proj_model_sim.py and proj_model_sentiment.py. train provides the entry for training the models (proj_model_sim is for the similarity and entailment tasks, and proj_model_sentiment is for the sentiment task). Check train.py to see the options.
-* utilities: includes lasagne_average_layer.py params.py tree.py. These provides utility functions/classes for the above two parts. 
+* supervised tasks: involves data_io.py, eval.py, train.py, proj_model_sim.py, and proj_model_sentiment.py. train provides the entry for training the models (proj_model_sim is for the similarity and entailment tasks, and proj_model_sentiment is for the sentiment task). Check train.py to see the options.
+* utilities: includes lasagne_average_layer.py, params.py, and tree.py. These provides utility functions/classes for the above two parts. 
 
 ## References
 For technical details, see [the paper](https://openreview.net/forum?id=SyK00v5xx).
