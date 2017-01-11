@@ -189,6 +189,82 @@ def getDataSentiment(batch):
     scores = np.asarray(scores,dtype=config.floatX)
     return (scores,g1x,g1mask)
 
+def sentiment2idx(sentiment_file, words):
+    """
+    Read sentiment data file, output array of word indices that can be fed into the algorithms.
+    :param sentiment_file: file name
+    :param words: a dictionary, words['str'] is the indices of the word 'str'
+    :return: x1, m1, golds. x1[i, :] is the word indices in sentence i, m1[i,:] is the mask for sentence i (0 means no word at the location), golds[i] is the label (0 or 1) for sentence i.
+    """
+    f = open(sentiment_file,'r')
+    lines = f.readlines()
+    golds = []
+    seq1 = []
+    #print("first line in %s" % sentiment_file)
+    #print(lines[0])
+    #count = 0
+    for i in lines:
+        i = i.split("\t")
+        p1 = i[0]; score = int(i[1]) # score are labels 0 and 1
+        X1 = getSeq(p1,words)
+
+        #if count == 0:
+        #    out_of_vocab = [out for out in p1.split() if out not in words]
+        #    print(out_of_vocab)
+        #    print(float(len(out_of_vocab))/ len(p1.split()))
+        #count = count + 1
+
+        seq1.append(X1)
+        golds.append(score)
+    x1,m1 = prepare_data(seq1)
+    return x1, m1, golds
+
+def sim2idx(sim_file, words):
+    """
+    Read similarity data file, output array of word indices that can be fed into the algorithms.
+    :param sim_file: file name
+    :param words: a dictionary, words['str'] is the indices of the word 'str'
+    :return: x1, m1, x2, m2, golds. x1[i, :] is the word indices in the first sentence in pair i, m1[i,:] is the mask for the first sentence in pair i (0 means no word at the location), golds[i] is the score for pair i (float). x2 and m2 are similar to x1 and m2 but for the second sentence in the pair.
+    """
+    f = open(sim_file,'r')
+    lines = f.readlines()
+    golds = []
+    seq1 = []
+    seq2 = []
+    for i in lines:
+        i = i.split("\t")
+        p1 = i[0]; p2 = i[1]; score = float(i[2])
+        X1, X2 = getSeqs(p1,p2,words)
+        seq1.append(X1)
+        seq2.append(X2)
+        golds.append(score)
+    x1,m1 = prepare_data(seq1)
+    x2,m2 = prepare_data(seq2)
+    return x1, m1, x2, m2, golds
+
+def entailment2idx(sim_file, words):
+    """
+    Read similarity data file, output array of word indices that can be fed into the algorithms.
+    :param sim_file: file name
+    :param words: a dictionary, words['str'] is the indices of the word 'str'
+    :return: x1, m1, x2, m2, golds. x1[i, :] is the word indices in the first sentence in pair i, m1[i,:] is the mask for the first sentence in pair i (0 means no word at the location), golds[i] is the label for pair i (CONTRADICTION NEUTRAL ENTAILMENT). x2 and m2 are similar to x1 and m2 but for the second sentence in the pair.
+    """
+    f = open(sim_file,'r')
+    lines = f.readlines()
+    golds = []
+    seq1 = []
+    seq2 = []
+    for i in lines:
+        i = i.split("\t")
+        p1 = i[0]; p2 = i[1]; score = i[2]
+        X1, X2 = getSeqs(p1,p2,words)
+        seq1.append(X1)
+        seq2.append(X2)
+        golds.append(score)
+    x1,m1 = prepare_data(seq1)
+    x2,m2 = prepare_data(seq2)
+    return x1, m1, x2, m2, golds
+
 def getWordWeight(weightfile, a=1e-3):
     if a <=0: # when the parameter makes no sense, use unweighted
         a = 1.0

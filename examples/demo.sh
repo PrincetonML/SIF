@@ -8,6 +8,9 @@ unzip glove.840B.300d.zip -d $DATADIR
 rm glove.840B.300d.zip
 fi
 
+# demo for computing SIF embedding
+python sif_embedding.py
+
 # textual similarity tasks
 python sim_sif.py 2>&1 | tee log/output_sim_sif.txt
 python sim_tfidf.py 2>&1 | tee log/output_sim_tfidf.txt
