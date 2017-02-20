@@ -25,8 +25,8 @@ for wordfile in wordfiles:
             params.rmpc = rmpc
             print 'remove the first %d principal components' % rmpc
             ## eval just one example dataset
-            parr, sarr = eval.sim_evaluate_all(We, words, weight4ind, sim_algo.weighted_average_sim_rmpc, params)
-            ## eval all datasets; need to obtained datasets from John Wieting's github (https://github.com/jwieting/iclr2016)
+            parr, sarr = eval.sim_evaluate_one(We, words, weight4ind, sim_algo.weighted_average_sim_rmpc, params)
+            ## eval all datasets; need to obtained datasets from John Wieting (https://github.com/jwieting/iclr2016)
             # parr, sarr = eval.sim_evaluate_all(We, words, weight4ind, sim_algo.weighted_average_sim_rmpc, params)
             paras = (wordfile, weightfile, weightpara, rmpc)
             parr4para[paras] = parr
