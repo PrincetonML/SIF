@@ -323,31 +323,32 @@ def getIDFWeight(wordfile, save_file=''):
         return x1,m1,x2,m2
 
     prefix = "../data/"
-    farr = ["MSRpar2012",
-            "MSRvid2012",
-            "OnWN2012",
-            "SMTeuro2012",
-            "SMTnews2012", # 4
-            "FNWN2013",
-            "OnWN2013",
-            "SMT2013",
-            "headline2013", # 8
-            "OnWN2014",
-            "deft-forum2014",
-            "deft-news2014",
-            "headline2014",
-            "images2014",
-            "tweet-news2014", # 14
-            "answer-forum2015",
-            "answer-student2015",
-            "belief2015",
-            "headline2015",
-            "images2015",    # 19
-            "sicktest",
-            "twitter",
-            "JHUppdb",
-            "anno-dev",
-            "anno-test"]
+    farr = ["MSRpar2012"]
+    #farr = ["MSRpar2012",
+    #        "MSRvid2012",
+    #        "OnWN2012",
+    #        "SMTeuro2012",
+    #        "SMTnews2012", # 4
+    #        "FNWN2013",
+    #        "OnWN2013",
+    #        "SMT2013",
+    #        "headline2013", # 8
+    #        "OnWN2014",
+    #        "deft-forum2014",
+    #        "deft-news2014",
+    #        "headline2014",
+    #        "images2014",
+    #        "tweet-news2014", # 14
+    #        "answer-forum2015",
+    #        "answer-student2015",
+    #        "belief2015",
+    #        "headline2015",
+    #        "images2015",    # 19
+    #        "sicktest",
+    #        "twitter",
+    #        "JHUppdb",
+    #        "anno-dev",
+    #        "anno-test"]
     (words, We) = getWordmap(wordfile)
     df = np.zeros((len(words),))
     dlen = 0
