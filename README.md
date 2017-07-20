@@ -5,6 +5,14 @@ This is the code for [the paper](https://openreview.net/forum?id=SyK00v5xx) "A S
 The code is written in python and requires numpy, scipy, pickle, sklearn, theano and the lasagne library. 
 Some functions/classes are based on the [code](https://github.com/jwieting/iclr2016) of John Wieting for the paper "Towards Universal Paraphrastic Sentence Embeddings" (Thanks John!). The example data sets are also preprocessed using the code there.
 
+## Install
+To install all dependencies `virtualenv` is suggested:
+
+```
+$ virtualenv .env
+$ . .env/bin/activate
+$ pip install -r requirements.text 
+```
 
 ## Get started
 To get started, cd into the directory examples/ and run demo.sh. It downloads the pretrained GloVe word embeddings, and then runs the scripts: 
