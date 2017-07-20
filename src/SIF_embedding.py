@@ -18,7 +18,7 @@ def get_weighted_average(We, x, w):
 
 def compute_pc(X,npc=1):
     """
-    Compute the principal components
+    Compute the principal components. DO NOT MAKE THE DATA ZERO MEAN!
     :param X: X[i,:] is a data point
     :param npc: number of principal components to remove
     :return: component_[i,:] is the i-th pc
