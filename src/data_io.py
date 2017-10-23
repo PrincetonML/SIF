@@ -1,9 +1,9 @@
 from __future__ import print_function
+
 import numpy as np
 import pickle
 from tree import tree
-from theano import config
-
+#from theano import config
 
 def getWordmap(textfile):
     words={}
@@ -142,7 +142,7 @@ def getDataSim(batch, nout):
             temp[ceil - 1] = score - fl
         scores.append(temp)
     scores = np.matrix(scores) + 0.000001
-    scores = np.asarray(scores, dtype=config.floatX)
+    scores = np.asarray(scores, dtype='float32')
     return (scores, g1x, g1mask, g2x, g2mask)
 
 def getDataEntailment(batch):
@@ -166,7 +166,7 @@ def getDataEntailment(batch):
             temp[2]=1
         scores.append(temp)
     scores = np.matrix(scores)+0.000001
-    scores = np.asarray(scores,dtype=config.floatX)
+    scores = np.asarray(scores,dtype='float32')
     return (scores,g1x,g1mask,g2x,g2mask)
 
 def getDataSentiment(batch):
@@ -186,8 +186,21 @@ def getDataSentiment(batch):
             temp[1]=1
         scores.append(temp)
     scores = np.matrix(scores)+0.000001
-    scores = np.asarray(scores,dtype=config.floatX)
+    scores = np.asarray(scores,dtype='float32')
     return (scores,g1x,g1mask)
+
+def sentences2idx(sentences, words):
+    """
+    Given a list of sentences, output array of word indices that can be fed into the algorithms.
+    :param sentences: a list of sentences
+    :param words: a dictionary, words['str'] is the indices of the word 'str'
+    :return: x1, m1. x1[i, :] is the word indices in sentence i, m1[i,:] is the mask for sentence i (0 means no word at the location)
+    """
+    for i in sentences:
+        seq1.append(getSeq(i,words))
+    x1,m1 = prepare_data(seq1)
+    return x1, m1
+
 
 def sentiment2idx(sentiment_file, words):
     """
@@ -200,20 +213,10 @@ def sentiment2idx(sentiment_file, words):
     lines = f.readlines()
     golds = []
     seq1 = []
-    #print("first line in %s" % sentiment_file)
-    #print(lines[0])
-    #count = 0
     for i in lines:
         i = i.split("\t")
         p1 = i[0]; score = int(i[1]) # score are labels 0 and 1
         X1 = getSeq(p1,words)
-
-        #if count == 0:
-        #    out_of_vocab = [out for out in p1.split() if out not in words]
-        #    print(out_of_vocab)
-        #    print(float(len(out_of_vocab))/ len(p1.split()))
-        #count = count + 1
-
         seq1.append(X1)
         golds.append(score)
     x1,m1 = prepare_data(seq1)
