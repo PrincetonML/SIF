@@ -11,7 +11,7 @@ To install all dependencies `virtualenv` is suggested:
 ```
 $ virtualenv .env
 $ . .env/bin/activate
-$ pip install -r requirements.text 
+$ pip install -r requirements.txt 
 ```
 
 ## Get started
@@ -32,9 +32,10 @@ The code is separated into the following parts:
 ## References
 For technical details and full experimental results, see [the paper](https://openreview.net/forum?id=SyK00v5xx).
 ```
-@article{arora2016asimple, 
+@article{arora2017asimple, 
 	author = {Sanjeev Arora and Yingyu Liang and Tengyu Ma}, 
 	title = {A Simple but Tough-to-Beat Baseline for Sentence Embeddings}, 
-	year = {2016}
+	booktitle = {International Conference on Learning Representations},
+	year = {2017}
 }
 ```
